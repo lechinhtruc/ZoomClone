@@ -2,32 +2,12 @@ const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 
 
-let customConfig;
-
-$.ajax({
-  url: "https://service.xirsys.com/ice",
-  data: {
-    ident: "lechinhtruc321",
-    secret: "8571be8a-a405-11ec-a0a2-0242ac130003",
-    domain: "letrucdevelop.herokuapp.com",
-    application: "default",
-    room: "default",
-    secure: 1
-  },
-  success: function (data, status) {
-    // data.d is where the iceServers object lives
-    customConfig = data.d;
-    console.log(customConfig);
-  },
-  async: false
-});
-
 const myPeer = new Peer(undefined, {
 	host: "mypeerserver3010.herokuapp.com",
 	port: "443", 
 	key : "peerjs",
-	secure : true,
-  config : customConfig
+	secure : true
+
 	/* config: {'iceServers': [
     	{ url: 'stun:stun2.l.google.com:19302' },
 	    { url: 'turn:192.158.29.39:3478?transport=udp', credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=', username: '28224511:1379330808' }
