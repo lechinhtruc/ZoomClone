@@ -23,26 +23,10 @@
     <script>
       const ROOM_ID = "<%= roomId %>";
     </script>
-     <script>
-      window.onload = function() {
-         let xhr = new XMLHttpRequest();
-         xhr.onreadystatechange = function($evt){
-            if(xhr.readyState == 4 && xhr.status == 200){
-                let res = JSON.parse(xhr.responseText);
-                console.log("response: ",res);
-            }
-         }
-         xhr.open("PUT", "https://global.xirsys.net/_turn/MyFirstApp", true);
-         xhr.setRequestHeader ("Authorization", "Basic " + btoa("lechinhtruc321:8571be8a-a405-11ec-a0a2-0242ac130003") );
-         xhr.setRequestHeader ("Content-Type", "application/json");
-         xhr.send( JSON.stringify({"format": "urls"}) );
-      }
-  </script>
     <script
       src="/js/peerjs.min.js"
       defer
     ></script>
-    <script src="/js/jquery.js" defer></script>
     <script src="/socket.io/socket.io.js" defer></script>
     <script src="/js/script.js" defer></script>
     <title>Speak</title>
