@@ -2,7 +2,7 @@ const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 
 
-const myPeer = new Peer(undefined, {
+/* const myPeer = new Peer(undefined, {
 	host: "mypeerserver3010.herokuapp.com",
 	port: "443", 
 	key : "peerjs",
@@ -11,14 +11,16 @@ const myPeer = new Peer(undefined, {
     	{ url: 'stun:hk-turn1.xirsys.com' },
 	    { url: 'turn:hk-turn1.xirsys.com:80?transport=udp', credential: '8942e304-a43c-11ec-9a64-0242ac120004', username: 'a2ERvV-EsmTxFZGF5Tol8mio3SmzEmoRF_px9EVR6N3ZXRv_0zEan6dXcSEUJzcKAAAAAGIwUpxsZWNoaW5odHJ1YzMyMQ==' }
   ]}
-});
+}); */
+
+const myPeer = new Peer();
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 const peers = {};
 navigator.mediaDevices
   .getUserMedia({
     video: true,
-    audio: true,
+    audio: true
   })
   .then((stream) => {
     addVideoStream(myVideo, stream);
