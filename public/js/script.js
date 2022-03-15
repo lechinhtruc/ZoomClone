@@ -34,7 +34,7 @@ navigator.mediaDevices
 	        setTimeout(function ()
       	{
         connectToNewUser(userId, stream);
-      	},5000);
+      	},15000);
     });
   });
 
@@ -51,7 +51,7 @@ function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-    alert(userVideoStream);
+   // alert(userVideoStream);
     addVideoStream(video, userVideoStream);
   });
   call.on("close", () => {
@@ -63,11 +63,11 @@ function connectToNewUser(userId, stream) {
 
 function addVideoStream(video, stream) {
   video.srcObject = stream;
-  video.addEventListener("loadedmetadata", () => {
-    alert("PLAY VIDEO FROM SOME ONE");
-    video.play();
-  });
   videoGrid.append(video);
+  video.onloadedmetadata = (event) => {
+    video.play();
+    alert("PLAY VIDEO FROM SOME ONE");
+  }
 }
 
 // URL Copy To Clipboard
