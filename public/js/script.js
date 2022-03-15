@@ -6,12 +6,11 @@ const myPeer = new Peer(undefined, {
 	host: "mypeerserver3010.herokuapp.com",
 	port: "443", 
 	key : "peerjs",
-	secure : true
-
-	/* config: {'iceServers': [
-    	{ url: 'stun:stun2.l.google.com:19302' },
-	    { url: 'turn:192.158.29.39:3478?transport=udp', credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=', username: '28224511:1379330808' }
-  ]} */
+	secure : true,
+	config: {'iceServers': [
+    	{ url: 'stun:hk-turn1.xirsys.com' },
+	    { url: 'turn:hk-turn1.xirsys.com:80?transport=udp', credential: '8942e304-a43c-11ec-9a64-0242ac120004', username: 'a2ERvV-EsmTxFZGF5Tol8mio3SmzEmoRF_px9EVR6N3ZXRv_0zEan6dXcSEUJzcKAAAAAGIwUpxsZWNoaW5odHJ1YzMyMQ==' }
+  ]}
 });
 const myVideo = document.createElement("video");
 myVideo.muted = true;
