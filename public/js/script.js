@@ -31,7 +31,7 @@ navigator.mediaDevices
 
     socket.on("user-connected", (userId) => {
       console.log(userId + " Connected");
-	setTimeout(function ()
+	        setTimeout(function ()
       	{
         connectToNewUser(userId, stream);
       	},5000);
@@ -74,7 +74,7 @@ document.getElementById("invite-button").addEventListener("click", getURL);
 function getURL() {
   const c_url = window.location.href;
   copyToClipboard(c_url);
-  alert("Url Copied to Clipboard,\nShare it with your Friends!\nUrl: " + c_url);
+  alert("Url Copied to Clipboard");
 }
 
 function copyToClipboard(text) {
