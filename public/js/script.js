@@ -65,11 +65,12 @@ function connectToNewUser(userId, stream) {
 
 function addVideoStream(video, stream) {
   video.srcObject = stream;
-  videoGrid.append(video);
+  
   video.onloadedmetadata = (event) => {
     video.play();
-    alert("PLAY VIDEO FROM SOME ONE");
+   // alert("PLAY VIDEO FROM SOME ONE");
   }
+  videoGrid.append(video);
 }
 
 // URL Copy To Clipboard
