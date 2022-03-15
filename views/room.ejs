@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="A free video chatting website" />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="/img/icon.svg" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cookie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      const ROOM_ID = "<%= roomId %>";
+    </script>
+    <script
+      src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"
+      defer
+    ></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="/js/script.js" defer></script>
+    <title>Speak</title>
+  </head>
+  <section id="main-section" class="video-section">
+    <h2>Let's Speak!</h2>
+    <h5>Your View</h5>
+    <div id="video-grid"></div>
+    <div class="button-area">
+      <button id="end-button">End Call</button>
+      <button id="invite-button">Invite Friends</button>
+    </div>
+  </section>
+</html>
