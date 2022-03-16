@@ -1,7 +1,6 @@
 const socket = io("/");
 const videoGrid = document.getElementById("video-grid");
 
-
 /* const myPeer = new Peer(undefined, {
 	host: "mypeerserver3010.herokuapp.com",
 	port: "443", 
@@ -15,30 +14,36 @@ const videoGrid = document.getElementById("video-grid");
 
 const myPeer = new Peer();
 const myVideo = document.createElement("video");
+
+
 myVideo.muted = true;
+
 const peers = {};
+
 navigator.mediaDevices
   .getUserMedia({
     video: true,
-    audio: true
+    audio: true,
   })
   .then((stream) => {
-    addVideoStream(myVideo, stream);
-
+    addVideoStream(myVideo, stream); //add my stream
     myPeer.on("call", (call) => {
-      call.answer(stream);
+      // someone call
+      call.answer(stream); // answer call from someone
+
       const video = document.createElement("video");
       call.on("stream", (userVideoStream) => {
-        addVideoStream(video, userVideoStream);
+        setTimeout(function () {
+          addVideoStream(video, userVideoStream);
+        }, 2500);
       });
     });
 
     socket.on("user-connected", (userId) => {
       console.log(userId + " Connected");
-	        setTimeout(function ()
-      	{
+      setTimeout(function () {
         connectToNewUser(userId, stream);
-      	},15000);
+      }, 5000);
     });
   });
 
@@ -55,23 +60,21 @@ function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream);
   const video = document.createElement("video");
   call.on("stream", (userVideoStream) => {
-   // alert(userVideoStream);
     addVideoStream(video, userVideoStream);
   });
   call.on("close", () => {
     video.remove();
   });
-
   peers[userId] = call;
 }
 
-function addVideoStream(video, stream) {
+function  addVideoStream(video, stream) {
   video.srcObject = stream;
-  
+
   video.onloadedmetadata = (event) => {
     video.play();
-   // alert("PLAY VIDEO FROM SOME ONE");
-  }
+    // alert("PLAY VIDEO FROM SOME ONE");
+  };
   videoGrid.append(video);
 }
 
